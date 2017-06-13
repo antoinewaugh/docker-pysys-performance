@@ -6,7 +6,6 @@ from apama.correlator import CorrelatorHelper
 class PySysTest(BaseTest):
         def execute(self):
             correlator = CorrelatorHelper(self)
-            #correlator.start(logfile='correlator.log', waitForServerUp=False)
             correlator.start(logfile='correlator.log', waitForServerUp=True)
             self.waitForFile(os.path.join(self.output, 'correlator.log'))
  
