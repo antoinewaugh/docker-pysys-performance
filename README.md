@@ -48,43 +48,42 @@ We find that run times on the host are approximately 0.05-0.1 seconds, and withi
 ## Host:
 
 ```
-[antoine@localhost docker-pysys-performance]$ pysys run perf000.2
+[antoine@localhost docker-pysys-performance]$ pysys run
 
-2017-06-14 14:48:22,692 INFO  ==============================================================
-2017-06-14 14:48:22,693 INFO  Id   : perf000.2
-2017-06-14 14:48:22,693 INFO  Title: Run system command using pysys ProcessWrapper.
-2017-06-14 14:48:22,693 INFO  ==============================================================
-2017-06-14 14:48:22,745 INFO  Assertion on boolean expression equal to true ... passed
-2017-06-14 14:48:22,746 INFO  
-2017-06-14 14:48:22,746 INFO  Test duration: 0.05 secs
-2017-06-14 14:48:22,746 INFO  Test final outcome:  PASSED
-2017-06-14 14:48:22,746 INFO  
-2017-06-14 14:48:22,746 CRIT  
-2017-06-14 14:48:22,746 CRIT  Test duration: 0.05 (secs)
-2017-06-14 14:48:22,746 CRIT  
-2017-06-14 14:48:22,746 CRIT  Summary of non passes: 
-2017-06-14 14:48:22,746 CRIT  	THERE WERE NO NON PASSES
+2017-06-14 21:22:29,908 INFO  ==============================================================
+2017-06-14 21:22:29,908 INFO  Id   : LaunchEchoTest
+2017-06-14 21:22:29,908 INFO  ==============================================================
+2017-06-14 21:22:29,960 INFO  Assertion on boolean expression equal to true ... passed
+2017-06-14 21:22:29,961 INFO  
+2017-06-14 21:22:29,961 INFO  Test duration: 0.05 secs
+2017-06-14 21:22:29,961 INFO  Test final outcome:  PASSED
+2017-06-14 21:22:29,961 INFO  
+2017-06-14 21:22:29,961 CRIT  
+2017-06-14 21:22:29,961 CRIT  Test duration: 0.05 (secs)
+2017-06-14 21:22:29,961 CRIT  
+2017-06-14 21:22:29,961 CRIT  Summary of non passes: 
+2017-06-14 21:22:29,961 CRIT  	THERE WERE NO NON PASSES
+
 ```
 
 ## Container:                                                       
 
 ```
-[root@81895454240f perf]# pysys run perf000.2
+[antoine@localhost docker-pysys-performance]$ docker run docker-pysys-performance
 
-2017-06-14 04:49:29,316 INFO  ==============================================================
-2017-06-14 04:49:29,317 INFO  Id   : perf000.2
-2017-06-14 04:49:29,317 INFO  Title: Run system command using pysys ProcessWrapper.
-2017-06-14 04:49:29,317 INFO  ==============================================================
-2017-06-14 04:49:30,220 INFO  Assertion on boolean expression equal to true ... passed
-2017-06-14 04:49:30,220 INFO  
-2017-06-14 04:49:30,220 INFO  Test duration: 0.90 secs
-2017-06-14 04:49:30,220 INFO  Test final outcome:  PASSED
-2017-06-14 04:49:30,220 INFO  
-2017-06-14 04:49:30,221 CRIT  
-2017-06-14 04:49:30,221 CRIT  Test duration: 0.91 (secs)
-2017-06-14 04:49:30,221 CRIT  
-2017-06-14 04:49:30,221 CRIT  Summary of non passes: 
-2017-06-14 04:49:30,221 CRIT  	THERE WERE NO NON PASSES
+2017-06-14 11:23:25,096 INFO  ==============================================================
+2017-06-14 11:23:25,096 INFO  Id   : LaunchEchoTest
+2017-06-14 11:23:25,096 INFO  ==============================================================
+2017-06-14 11:23:25,849 INFO  Assertion on boolean expression equal to true ... passed
+2017-06-14 11:23:25,850 INFO  
+2017-06-14 11:23:25,850 INFO  Test duration: 0.75 secs
+2017-06-14 11:23:25,850 INFO  Test final outcome:  PASSED
+2017-06-14 11:23:25,850 INFO  
+2017-06-14 11:23:25,850 CRIT  
+2017-06-14 11:23:25,850 CRIT  Test duration: 0.75 (secs)
+2017-06-14 11:23:25,850 CRIT  
+2017-06-14 11:23:25,850 CRIT  Summary of non passes: 
+2017-06-14 11:23:25,850 CRIT  	THERE WERE NO NON PASSES
 
 ```
 
@@ -93,7 +92,7 @@ We find that run times on the host are approximately 0.05-0.1 seconds, and withi
 In order to better understand which areas of code are taking the most time, the following commands were run on the host and within the container
 
 ```
-python -m cProfile /apama_home/bin/pysys run perf000.2 > perf000.2.profile
+python -m cProfile /apama_home/bin/pysys run LaunchEchoTest > profile.log
 ```
 
 The result indicates the majority of the delay/difference within wait & start
