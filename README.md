@@ -1,3 +1,32 @@
+# Issue has been resolved!
+
+The observed delay in pysys calling external programs through its `startBackGroundProcess()` when running in a docker container compared to a host has been narrowed down to plat-unix/helper.py:126:136 
+
+```
+try:
+	maxfd = os.sysconf("SC_OPEN_MAX")
+except:
+	maxfd=256
+for fd in range(3, maxfd):
+	try:
+		os.close(fd)
+	except:
+		x = x + 1
+		pass
+```
+
+The culprit: SC_OPEN_MAX returned 1,024 on the host, and 1,048,576.
+
+This value is generated at compile time, and is therefore out of our control.
+
+Sample python to output SC_OPEN_MAX
+```
+import os
+maxfd = os.sysconf("SC_OPEN_MAX")
+print maxfd
+
+```
+
 # Running
 
 ## Within Docker Container
