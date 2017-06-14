@@ -2,7 +2,7 @@
 <pysystest type="auto" state="runnable">
     
   <description> 
-    <title>Base test, asserting local variable x==1</title>    
+    <title>Run system command using pysys ProcessWrapper.</title>    
     <purpose><![CDATA[
 ]]>
     </purpose>

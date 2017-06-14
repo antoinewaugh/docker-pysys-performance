@@ -3,8 +3,8 @@ from pysys.basetest import BaseTest
 
 class PySysTest(BaseTest):
         def execute(self):
-                self.x=1
+            pass
 
         def validate(self):
-                self.assertTrue(self.x==1)
+            self.assertTrue(True)
 

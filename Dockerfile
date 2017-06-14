@@ -1,3 +1,6 @@
 FROM relativetechnologies/apama:latest
 
-COPY . /home/perf
+COPY . /perf
+
+WORKDIR /perf
+CMD ['pysys', 'run']
