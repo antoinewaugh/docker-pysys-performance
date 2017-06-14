@@ -12,10 +12,12 @@ RUN \
 RUN \
   wget https://downloads.sourceforge.net/project/pysys/pysys/1.2.0/PySys-1.2.0.tar.gz && \
   tar -xvf PySys-1.2.0.tar.gz && \
-  cd Pysys-1.2.0 && \
+  cd PySys-1.2.0 && \
   python setup.py install
-
 
 COPY . /test
 
+WORKDIR /test
+
+CMD ["pysys.py", "run"]
 

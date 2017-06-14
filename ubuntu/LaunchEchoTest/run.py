@@ -10,4 +10,3 @@ class PySysTest(BaseTest):
 
         def validate(self):
             self.assertTrue(True)
-
