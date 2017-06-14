@@ -1,5 +1,7 @@
 # Results from pysys testing host v docker
 
+We are seeing a significant overhead when running pysys' ProcessWrapper .startProcess() command from within Docker compared to a native linux host.
+
 Considering the following pysys script
 
 ```
@@ -16,7 +18,8 @@ class PySysTest(BaseTest):
             self.assertTrue(True)
 ```
 
-We find that run times differ drastically between host and docker container.
+We find that run times on the host are approximately 0.05-0.1 seconds, and within a container anywhere from 1-10seconds.
+
 
 ## Host:
 
@@ -97,6 +100,9 @@ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
  20    	1.002    0.050    1.002    0.050 	{time.sleep}
 
 ```
+
+After adding some additional logging within the `plat-unix/helper.py` , it appears the host calls os.waitpid() three times on average, whereas the docker container results in tens-hundreds of calls to os.waitpid().
+
 
 ## Long running containers: seeing this arbitrary 1 second difference drift to > 5 seconds per call to ProcessWrapper.start()
 
