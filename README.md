@@ -27,7 +27,13 @@ print maxfd
 
 ```
 
-# Running
+# Conslusion
+
+```
+ulimit -u 1024 # will set upper bound to realistic number
+```
+
+# Running Comparison Tests
 
 ## Within Docker Container
 
