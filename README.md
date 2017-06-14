@@ -1,3 +1,27 @@
+# Running
+
+## Within Docker Container
+
+```
+git clone https://github.com/antoinewaugh/docker-pysys-performance.git
+
+cd docker-pysys-performance
+
+docker build -t docker-pysys-performance .
+
+docker run docker-pysys-performance
+```
+
+## From Host
+
+```
+git clone https://github.com/antoinewaugh/docker-pysys-performance.git
+
+cd docker-pysys-performance
+
+pysys run
+```
+
 # Results from pysys testing host v docker
 
 We are seeing a significant overhead when running pysys' ProcessWrapper .startProcess() command from within Docker compared to a native linux host.
