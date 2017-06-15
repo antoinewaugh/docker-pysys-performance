@@ -15,7 +15,12 @@ for fd in range(3, maxfd):
 		pass
 ```
 
-The culprit: SC_OPEN_MAX returned 1,024 on the host, and 1,048,576.
+The culprit: SC_OPEN_MAX returned 1,024 on the host, and 1,048,576 from within a container.
+
+```
+ulimit -u
+ulimit -r
+```
 
 This value is generated at compile time, and is therefore out of our control.
 
